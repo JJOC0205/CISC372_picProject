@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "__hash_table": "c",
+        "array": "c",
+        "charconv": "c",
+        "type_traits": "c",
+        "limits": "c",
+        "ratio": "c",
+        "tuple": "c",
+        "variant": "c"
+    }
+}
