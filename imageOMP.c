@@ -3,7 +3,6 @@
 #include <time.h>
 #include <string.h>
 #include "image.h"
-#include <omp.h>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -114,7 +113,7 @@ int main(int argc,char** argv){
     destImage.width=srcImage.width;
     destImage.data=malloc(sizeof(uint8_t)*destImage.width*destImage.bpp*destImage.height);
 
-    #pragma omp parallel
+#   pragma omp parallel
     convolute(&srcImage,&destImage,algorithms[type]);
 
     stbi_write_png("output.png",destImage.width,destImage.height,destImage.bpp,destImage.data,destImage.bpp*destImage.width);

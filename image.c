@@ -62,7 +62,7 @@ uint8_t getPixelValue(Image* srcImage,int x,int y,int bit,Matrix algorithm){
 //            destImage: A pointer to a  pre-allocated (including space for the pixel array) structure to receive the convoluted image.  It should be the same size as srcImage
 //            algorithm: The kernel matrix to use for the convolution
 //Returns: Nothing
-void* convolute(void* rank){
+void* convoluteThreaded(void* rank){
     int row,pix,bit,span, localRows,totalRows, localStart;
     totalRows = img.srcImage->height;
     long local = (long) rank;
@@ -134,7 +134,7 @@ int main(int argc,char** argv){
         img.destImage = &destImage;
         img.srcImage = &srcImage;
         printf("Creating thread %d\n", i);
-        pthread_create(&threads[i], NULL, convolute, (void *) i);
+        pthread_create(&threads[i], NULL, convoluteThreaded, (void *) i);
     }
     printf("Threads created\n");
     for( int i = 0; i < threadCount; i++){
