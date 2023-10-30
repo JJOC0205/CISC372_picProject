@@ -1,7 +1,7 @@
 
 image:image.c image.h
-	gcc -g image.c -o image -lm
+	gcc -std=c99 -g image.c -o image -lm
 clean:
 	rm -f image output.png
 omp:imageOMP.c image.h
-	gcc -g -fopenmp imageOMP.c -o omp -lm
+	gcc -std=c99 -g -fopenmp imageOMP.c -o omp -lm
